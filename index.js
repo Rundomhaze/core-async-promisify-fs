@@ -1,5 +1,5 @@
 const fs = require('fs');
-const wayDir = './notes'
+const wayDir = './notes/'
 
 
 function readFile(path) {
@@ -15,9 +15,9 @@ function readFile(path) {
   });
 }
 
-readFile('./notes/note-1.txt')
-  .then(result => console.log(result))
-  .catch(err => console.log(err))
+// readFile('./notes/note-1.txt')
+//   .then(result => console.log(result))
+//   .catch(err => console.log(err))
 
 
 function readDir(path) {
@@ -33,9 +33,9 @@ function readDir(path) {
   })
 }
 
-readDir(wayDir)
-.then(result => console.log(result))
-.catch(error => console.log(error));
+// readDir(wayDir)
+//   .then(result => console.log(result))
+//   .catch(error => console.log(error));
 
 
 function stat(path) {
@@ -51,14 +51,28 @@ function stat(path) {
   })
 };
 
-stat('./notes/note-1.txt')
-  .then(result => console.log(result))
-  .catch(err => console.log(err));
+// stat('./notes/note-1.txt')
+//   .then(result => console.log(result))
+//   .catch(err => console.log(err));
+
+
+
+function rename(oldWay, newway) {
+  return new Promise((resolve, reject) => {
+    fs.rename(oldWay, newway, (err) => {
+      resolve()
+    })
+  })
+}
+
+
+// rename('./renameNotes/NOTE-1.txt', './notes/note-1.txt')
 
 
 module.exports = {
   stat,
-  readDir
+  readDir,
+  rename
 }
 
 
